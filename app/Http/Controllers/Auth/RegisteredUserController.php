@@ -29,12 +29,14 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $validate = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
+        if (!$request->has('is_aggreed')) {
+            return redirect()->back()->withErrors(['is_aggreed' => 'You must agree to the terms and conditions.']);
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
