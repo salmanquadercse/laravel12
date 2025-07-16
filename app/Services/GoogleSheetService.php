@@ -25,7 +25,7 @@ class GoogleSheetService
         $this->spreadsheetId = '1ShCydMCsP07UVYEJIgLbXuy0uVEVV1Fvq5PjuTCDZ4c';
     }
 
-    public function readSheet($range = 'Sheet1!A1:D10')
+    public function readSheet($range = 'Sheet1!A1:I10')
     {
         $response = $this->service->spreadsheets_values->get($this->spreadsheetId, $range);
         return $response->getValues();
