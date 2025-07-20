@@ -6,9 +6,9 @@ use App\Http\Controllers\GoogleSheetController;
 use App\Http\Controllers\LookupController;
 use Illuminate\Support\Facades\Route;
 
-/* Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('welcome');
-})->middleware(['auth', 'verified'])->name('dashboard'); */
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
