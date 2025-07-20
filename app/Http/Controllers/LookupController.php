@@ -21,7 +21,7 @@ class LookupController extends Controller
      */
     public function create()
     {
-        //
+        return view('lookups.create');
     }
 
     /**

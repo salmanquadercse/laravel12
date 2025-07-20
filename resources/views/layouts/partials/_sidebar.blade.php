@@ -15,8 +15,8 @@
             </a>
             <div class="collapse" id="error">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html">List</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html">Create New</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('lookups.index') }}">List</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('lookups.create') }}">Create New</a></li>
                 </ul>
             </div>
         </li>

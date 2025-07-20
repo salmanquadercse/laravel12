@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('lookups', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 255);
+            $table->string('type', 100);
             $table->timestamps();
         });
     }

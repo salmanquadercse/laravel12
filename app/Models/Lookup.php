@@ -9,4 +9,12 @@ class Lookup extends Model
 {
     /** @use HasFactory<\Database\Factories\LookupFactory> */
     use HasFactory;
+
+    /*
+     The attributes that are mass assignment
+     @var list<string>
+    */
+     protected $fillable = [
+        'title', 'type'
+    ];
 }
