@@ -38,6 +38,11 @@
             <button type="button" class="btn btn-block btn-facebook auth-form-btn">
                 <i class="ti-facebook me-2"></i>Connect using facebook </button>
         </div>
+        <div class="mb-2 d-grid gap-2">
+            <a href="{{ route('auth.google') }}">
+                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png">
+            </a>
+        </div>
         <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="{{ route('register') }}" class="text-primary">Create</a>
         </div>
     </form>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GoogleSheetController;
 use App\Http\Controllers\LookupController;
@@ -29,4 +30,11 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::match(['get','post'], '/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
     Route::resource('lookups', LookupController::class);
 });
+
+//socialite routes
+Route::controller(GoogleController::class)->group(function(){
+    Route::get('auth/google', 'redirectToGoogle')->name('auth.google');
+    Route::get('auth/google/callback', 'handleGoogleCallback');
+});
+
 require __DIR__.'/auth.php';
