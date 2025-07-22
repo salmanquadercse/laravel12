@@ -5,11 +5,12 @@
             <div class="card-body">
                 <h4 class="card-title">Lookup Manage</h4>
                 <p class="card-description">Create Lookup</p>
-                <form class="forms-sample" method="POST" action="{{ route('lookups.store') }}">
+                <form class="forms-sample" method="POST" action="{{ route('lookups.update', $lookup->id) }}">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+                        <input type="text" name="title" class="form-control" value="{{ old('title', $lookup->title) }}" id="title" placeholder="Title">
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="type_exist" class="form-check-input" id="type_exist">
@@ -18,11 +19,11 @@
                     <div class="form-group">
                         <label for="type">Type</label>
                         <div id="input_select_wrap">
-                            <input type="text" name="type" class="form-control" id="type" placeholder="Type">
+                            <input type="text" name="type" class="form-control" value="{{ old('type', $lookup->type) }}" id="type" placeholder="Type">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    <a class="btn btn-light" href="{{ route('lookups.index') }}">Cancel</a>
                 </form>
             </div>
         </div>
@@ -43,6 +44,11 @@
                     typeSelect.innerHTML = `<input type="text" name="type" class="form-control" id="type" placeholder="Type">`;
                 }
             });
+            @if(isset($lookup))
+                typeExistCheckbox.checked = true;
+            @endif
+
+
         });
     </script>
 @endsection

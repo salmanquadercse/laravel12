@@ -14,8 +14,7 @@ class LookupController extends Controller
     public function index()
     {
         $lookups = Lookup::all();
-        dd($lookups);
-        // return view('lookups.index', compact('lookups'));
+        return view('lookups.index', compact('lookups'));
     }
 
     /**
@@ -23,8 +22,8 @@ class LookupController extends Controller
      */
     public function create()
     {
-        $typeList = Lookup::distinct()->pluck('type');
-        return view('lookups.create');
+        $genders = Lookup::distinct()->pluck('type');
+        return view('lookups.create', compact('genders'));
     }
 
     /**
@@ -56,7 +55,8 @@ class LookupController extends Controller
      */
     public function edit(Lookup $lookup)
     {
-        //
+        $genders = Lookup::distinct()->pluck('type');
+        return view('lookups.update', compact('genders', 'lookup'));
     }
 
     /**
@@ -64,7 +64,14 @@ class LookupController extends Controller
      */
     public function update(UpdateLookupRequest $request, Lookup $lookup)
     {
-        //
+        $validatedData = $request->validated();
+
+        // Update the Lookup instance with validated data
+        $lookup->fill($validatedData);
+        $lookup->save();
+
+        // Redirect or return a response
+        return redirect()->route('lookups.index')->with('success', 'Lookup updated successfully.');
     }
 
     /**

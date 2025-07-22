@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Customer;
 
 class Lookup extends Model
 {
@@ -17,4 +18,11 @@ class Lookup extends Model
      protected $fillable = [
         'title', 'type'
     ];
+
+    /**
+     * lookup has many customers
+     */
+    public function customers(){
+        return $this->hasMany(Customer::class);
+    }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GoogleSheetController;
 use App\Http\Controllers\LookupController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +30,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::match(['get','post'], '/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
     Route::match(['get','post'], '/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
     Route::resource('lookups', LookupController::class);
+    Route::resource('customers', CustomerController::class);
 });
 
 //socialite routes
