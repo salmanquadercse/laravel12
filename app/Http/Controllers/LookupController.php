@@ -14,8 +14,7 @@ class LookupController extends Controller
     public function index()
     {
         $lookups = Lookup::all();
-        dd($lookups);
-        // return view('lookups.index', compact('lookups'));
+        return view('lookups.index', compact('lookups'));
     }
 
     /**
@@ -23,8 +22,8 @@ class LookupController extends Controller
      */
     public function create()
     {
-        $typeList = Lookup::distinct()->pluck('type');
-        return view('lookups.create');
+        $genders = Lookup::distinct()->pluck('type');
+        return view('lookups.create', compact('genders'));
     }
 
     /**

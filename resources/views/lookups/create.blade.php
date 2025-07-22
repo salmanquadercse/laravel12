@@ -30,16 +30,15 @@
 @endsection
 @section('scripts')
     <script>
+        const genders = @json($genders);
         document.addEventListener('DOMContentLoaded', function () {
             const typeExistCheckbox = document.getElementById('type_exist');
             const typeSelect = document.getElementById('input_select_wrap');
+            let options = genders.map((gender)=> `<option value="${gender}">${gender}</option>`).join('');
 
             typeExistCheckbox.addEventListener('change', function () {
                 if (this.checked) {
-                    typeSelect.innerHTML = `<select class="form-select" id="type" name="type">
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select>`;
+                    typeSelect.innerHTML = `<select class="form-select" id="type" name="type">${options}</select>`;
                 } else {
                     typeSelect.innerHTML = `<input type="text" name="type" class="form-control" id="type" placeholder="Type">`;
                 }
