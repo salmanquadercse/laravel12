@@ -14,7 +14,25 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        $eloquentColl = Customer::all();
+        $justCollect = collect(['Abdul Quader', 'Rahat', 'Akhi Parvin']);
+        echo "<pre>";
+        var_dump($justCollect);
+
+        $collection = collect(['Taylor', 'Abigail', ''])->map(function (?string $name) {
+            return empty($name);
+        });//->reject(function (string $name) {
+            //return empty($name);
+        //});
+        echo "<pre>";
+        print_r($collection);
+        die;
+die;
+
         $customers = Customer::with('lookup')->get();
+        echo "<pre>";
+        print_r($customers);
+        die;    
         return view('customers.index', compact('customers'));
     }
 
@@ -51,7 +69,8 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        $genders = Lookup::where('type','gender')->pluck('title','id');
+        return view('customers.update', compact('genders', 'customer'));
     }
 
     /**

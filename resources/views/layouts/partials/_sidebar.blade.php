@@ -21,16 +21,15 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#error" aria-expanded="false"
-                aria-controls="error">
+            <a class="nav-link" data-bs-toggle="collapse" href="#" aria-expanded="false">
                 <i class="icon-ban menu-icon"></i>
-                <span class="menu-title">Look Up</span>
+                <span class="menu-title">Customers</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="error">
+            <div class="collapse">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('lookups.index') }}">List</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('lookups.create') }}">Create New</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('customers.index') }}">List</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('customers.create') }}">Create New</a></li>
                 </ul>
             </div>
         </li>

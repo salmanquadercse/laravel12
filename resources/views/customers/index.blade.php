@@ -23,13 +23,13 @@
                                     <tr>
                                         <td>{{ $customer->id }}</td>
                                         <td>{{ $customer->name }}</td>
-                                        <td>{{ $customer->gender_id }}</td>
+                                        <td>{{ $customer->lookup->title }}</td>
                                         <td>{{ $customer->email }}</td>
                                         <td>{{ $customer->birthdate }}</td>
                                         <td>{{ $customer->is_active }}</td>
                                         <td>
-                                            <a href="{{ route('customer.edit', $customer->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                            <form action="{{ route('customer.destroy', $customer->id) }}" method="POST" style="display:inline;">
+                                            <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                            <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -39,7 +39,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="5" class="text-center">No lookups data found</td>
+                                    <td colspan="6" class="text-center">No lookups data found</td>
                                 </tr>
                             @endif
                         </tbody>
